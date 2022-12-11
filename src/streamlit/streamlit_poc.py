@@ -24,7 +24,8 @@ if st.session_state.rerun:
     st.session_state.rerun = False
     st.experimental_rerun()
 else:
-    ingredient = st.text_input('Enter your ingredients', value="", placeholder='Enter an ingredient')
+    ingredient = st.text_input(
+        'Enter your ingredients', value="", placeholder='Enter an ingredient')
     if st.button('Add Task') and ingredient != "" and ingredient not in st.session_state.myingredients:
         st.session_state.myingredients.append(ingredient)
 
@@ -42,7 +43,7 @@ Finish and Serve
 Using a potato masher or a wooden spoon, mash a few beans. This makes the curry creamy and thick naturally. To thicken it more, simmer for a few minutes on saute mode.
 Garnish with cilantro and squeeze a few drops of lime or lemon juice. Serve with Puri, Naan, or Cumin rice!'''
     st.write(prompt)
-    image = Image.open('Chana-Masala-Featured.jpg')
+    # image = Image.open('Chana-Masala-Featured.jpg')
     images = dalle.generate_output(prompt)
     st.image(images[0])
     # st.image(image)
