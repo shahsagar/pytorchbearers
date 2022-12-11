@@ -1,10 +1,10 @@
-import openai.dalle as dalle
+from PIL import Image
+from datetime import datetime as dt
+import streamlit as st
 import os
 import sys
-import streamlit as st
-from datetime import datetime as dt
-from PIL import Image
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
+from openai_api import dalle
 
 
 if "myingredients" not in st.session_state:
