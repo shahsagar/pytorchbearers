@@ -4,7 +4,7 @@ import streamlit as st
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
-from openai_api import dalle
+from openai_api import run_app
 
 
 if "myingredients" not in st.session_state:
@@ -32,18 +32,10 @@ else:
 list_ingredients()
 
 if st.button('Generate recipe'):
-    prompt = '''Soak Dried Chickpeas or Use Canned
-Rinse and soak dry chickpeas in about 4 cups water, overnight, or at least 8-10 hours. Drain and rinse them before cooking. Skip this step if using unsoaked chickpeas. If using canned chickpeas, rinse and drain them.
-Saute and Pressure Cook
-Turn on Saute adjust it to high. Heat oil (or ghee) and add cumin seeds. When cumin begins to splutter, add onions and saute them for 3-4 minutes. Add ginger and garlic paste, along with green chilies, and saute for another minute. Now add the tomato, and all the spices along with a few tablespoons of water. Use that to deglaze the pot and scrape off any brown bits stuck at the bottom. Cancel Saute.
-Add chickpeas, and water and give it a stir. Close the lid, vent set to 'sealing', and pressure cook for 45 minutes at Bean/Chili or Manual mode.
-If using unsoaked dry chickpeas, adjust the pressure cook time to 60 minutes. If using canned chickpeas, reduce the cooking time to 5 minutes.
-Once cooking time is up, wait for the pressure to release naturally for 10-15 minutes, followed by manual pressure release. Open the lid after the pin drops. 
-Finish and Serve
-Using a potato masher or a wooden spoon, mash a few beans. This makes the curry creamy and thick naturally. To thicken it more, simmer for a few minutes on saute mode.
-Garnish with cilantro and squeeze a few drops of lime or lemon juice. Serve with Puri, Naan, or Cumin rice!'''
-    st.write(prompt)
-    # image = Image.open('Chana-Masala-Featured.jpg')
-    images = dalle.generate_output(prompt)
+    # sagar will fetch input json
+
+    recipe, images = run_app.run(input_json)
+
+    st.write(recipe)
+    # XXX: display multiple images
     st.image(images[0])
-    # st.image(image)
