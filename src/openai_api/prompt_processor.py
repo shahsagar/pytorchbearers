@@ -19,6 +19,8 @@ def create_gpt_prompt(gpt_json):
     meal_type = gpt_json['meal_type']
     food_category = gpt_json['food_category']
     # XXX: include this in final prompt
+    # XXX: include flavor profile
+    # XXX: include time of meal
     prep_time = gpt_json['prep_time']
 
     ingredients = ''
