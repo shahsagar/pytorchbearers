@@ -3,10 +3,25 @@ import json
 
 def create_gpt_prompt(gpt_json):
     '''
-    Create a 500 calories spicy indian non veg recipes using chicken, rice, green peas, and broccoli. 
-    Show the calorie breakdown. No gluten, nuts, and soy.  
-    Contain a lunch appetizer and an entree. 
-    There should be a visual description of the final dish including appetizer and entree"
+    new prompt format
+
+    prompt = 
+    Create a recipe with the following conditions
+
+    Conditions:
+    1. use chicken, rice, cauliflower
+    2. it should be a spicy vegetarian recipe
+    3. avoid gluten and soy 
+    4. calorie count should be less than 500 calories 
+    5. there should be an appetizer and an entree
+    6. generate a visual description of the final dish
+
+    Desired Format:
+    Ingredients: -||-
+    Instructions: -||-
+    Calorie Breakdown: -||- 
+    Nutrition Information Per Serving: -||-
+    Visual Description: -||-
     '''
 
     # with open('gpt_json.json') as f:
