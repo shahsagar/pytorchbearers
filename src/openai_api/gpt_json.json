@@ -1,0 +1,21 @@
+{
+    "ing_list": [
+        "chicken",
+        "rice",
+        "green peas",
+        "broccoli"
+    ],
+    "calorie_count": "500",
+    "cuisine_type": "Indian",
+    "allergies_list": [
+        "gluten",
+        "nut",
+        "soy"
+    ],
+    "meal_type": "non vegetarian",
+    "food_category": [
+        "entree",
+        "appetizer"
+    ],
+    "prep_time": "45"
+}
