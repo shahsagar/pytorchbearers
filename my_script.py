@@ -1,38 +1,54 @@
 import streamlit as st
-from datetime import datetime as dt
 from PIL import Image
+import streamlit.components.v1 as components
 
-if "myingredients" not in st.session_state:
-    st.session_state.myingredients = []
+st.set_page_config(layout="wide")
+
+if "input" not in st.session_state:
+    st.session_state.input = {'ingredients':[]}
 
 if "rerun" not in st.session_state:
     st.session_state.rerun = False
 
 def list_ingredients():
-    st.session_state.tskclk = []
-    for i, ingredient in enumerate(st.session_state.myingredients):
+    for i, ingredient in enumerate(st.session_state.input['ingredients']):
         st.write(ingredient)
 
-if st.session_state.rerun:
-    st.session_state.rerun = False
-    st.experimental_rerun()
-else:
-    ingredient = st.text_input('Enter your ingredients', value="", placeholder = 'Enter an ingredient')
-    if st.button('Add Task') and ingredient != "" and ingredient not in st.session_state.myingredients:
-        st.session_state.myingredients.append(ingredient)
+cols = st.columns(9)
 
-list_ingredients()
+with cols[0]:
+    # st.header("ENTER INGREDIENTS [REQUIRED]")
+    ingredient = st.text_input('ENTER INGREDIENTS [REQUIRED]', value="", placeholder = 'Enter an ingredient')
+    if ingredient != "" and ingredient not in st.session_state.input['ingredients']:
+        st.session_state.input['ingredients'].append(ingredient)
+    list_ingredients()
+
+with cols[1]:
+    # st.header("Dietary Restriction")
+    st.session_state.input['dietary_restriction'] = st.selectbox('DIETARY RESTRICTIONS', ['any', 'vegan', 'vegetarian', 'non-vegetarian', 'kosher', 'halal'])
+
+with cols[2]:
+    st.session_state.input['time'] = st.selectbox('TIME', ['any', 'breakfast', 'lunch', 'dinner', 'midnight snack'])
+
+with cols[3]:
+    st.session_state.input['cuisine'] = st.selectbox('CUISINE', ['Indian', 'Thai', 'Japanese', 'Chinese', 'Italian', 'French'])
+
+with cols[4]:
+    st.session_state.input['flavour_profile'] = st.selectbox('FLAVOUR PROFILE', ['sweet', 'spicy', 'salty', 'bitter', 'sour', 'umami'])
+
+with cols[5]:
+    st.session_state.input['allergies'] = st.multiselect('ALLERGIES', ['gluten', 'nuts', 'fish', 'dairy', 'eggs', 'soy'])
+
+with cols[6]:
+    st.session_state.input['meal_type'] = st.selectbox('MEAL TYPE', ['any', 'appetizer', 'entree', 'dessert'])
+
+with cols[7]:
+    st.session_state.input['number_of_calories'] = st.slider('NUMBER OF CALORIES', 0, 4000, 500)
+
+with cols[8]:
+    st.session_state.input['preparation_time'] = st.slider('Preparation Time (in minutes)', 0, 120, 30)
 
 if st.button('Generate recipe'):
-    st.write('''Soak Dried Chickpeas or Use Canned
-Rinse and soak dry chickpeas in about 4 cups water, overnight, or at least 8-10 hours. Drain and rinse them before cooking. Skip this step if using unsoaked chickpeas. If using canned chickpeas, rinse and drain them.
-Saute and Pressure Cook
-Turn on Saute adjust it to high. Heat oil (or ghee) and add cumin seeds. When cumin begins to splutter, add onions and saute them for 3-4 minutes. Add ginger and garlic paste, along with green chilies, and saute for another minute. Now add the tomato, and all the spices along with a few tablespoons of water. Use that to deglaze the pot and scrape off any brown bits stuck at the bottom. Cancel Saute.
-Add chickpeas, and water and give it a stir. Close the lid, vent set to 'sealing', and pressure cook for 45 minutes at Bean/Chili or Manual mode.
-If using unsoaked dry chickpeas, adjust the pressure cook time to 60 minutes. If using canned chickpeas, reduce the cooking time to 5 minutes.
-Once cooking time is up, wait for the pressure to release naturally for 10-15 minutes, followed by manual pressure release. Open the lid after the pin drops. 
-Finish and Serve
-Using a potato masher or a wooden spoon, mash a few beans. This makes the curry creamy and thick naturally. To thicken it more, simmer for a few minutes on saute mode.
-Garnish with cilantro and squeeze a few drops of lime or lemon juice. Serve with Puri, Naan, or Cumin rice!''')
+    st.write(st.session_state.input)
     image = Image.open('Chana-Masala-Featured.jpg')
     st.image(image)
