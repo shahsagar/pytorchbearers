@@ -7,6 +7,7 @@
     ],
     "calorie_count": "500",
     "cuisine_type": "Indian",
+    "flavor": "spicy",
     "allergies_list": [
         "gluten",
         "nut",

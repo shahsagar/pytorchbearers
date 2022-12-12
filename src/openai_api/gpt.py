@@ -70,7 +70,7 @@ if __name__ == '__main__':
                         help="max input tokens", default=1670)
 
     args = parser.parse_args()
-    prompts = get_prompts(args.prompt, args.temperature,
+    prompts = get_recipe(args.prompt, args.temperature,
                           args.max_tokens, number_of_results=1)
 
     print(prompts)

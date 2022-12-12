@@ -33,6 +33,7 @@ def create_gpt_prompt(gpt_json):
     allergies_list = gpt_json['allergies_list']
     meal_type = gpt_json['meal_type']
     food_category = gpt_json['food_category']
+    flavor = gpt_json['flavor']
     # XXX: include this in final prompt
     # XXX: include flavor profile
     # XXX: include time of meal
@@ -63,16 +64,16 @@ def create_gpt_prompt(gpt_json):
         allergies = ''
 
     # veg non veg
-    meal_type = ''
+    meal = ''
     if meal_type:
-        meal_type = meal_type
+        meal = meal_type
 
     viz = 'There should be a visual description of the final dish'
 
     # entree appetizer
     food_breakdown = ''
     if food_category:
-        food_breakdown = 'Contains '
+        food_breakdown = 'There should be '
         viz += ' including '
         for category in food_category:
             food_breakdown = food_breakdown + category + ', '
@@ -80,8 +81,12 @@ def create_gpt_prompt(gpt_json):
         food_breakdown = food_breakdown[:-2] + '.'
         viz = viz[:-4]
 
-    gpt_prompt = f'Create a {calories} {meal_type} {cuisine} recipe using {ingredients} {cal_breakdown} {allergies} {food_breakdown} {viz}'
-    gpt_prompt = gpt_prompt.rstrip()
+
+    desired_format = "Desired Format:\nIngredients: -||-\nInstructions: -||-\nCalorie Breakdown: -||-\nNutrition Information Per Serving: -||-\nVisual Description: -||-"
+    new_prompt = f'Create a recipe with the following conditions\n\nConditions:\nuse {ingredients}\nit should be {flavor} {meal} {cuisine} recipe\n{allergies}\ncalorie count should be less than{calories}\n{food_breakdown}\n{viz}\n\n{desired_format}'
+
+    #gpt_prompt = f'Create a {calories} {meal} {cuisine} recipe using {ingredients} {cal_breakdown} {allergies} {food_breakdown} {viz}'
+    gpt_prompt = new_prompt.rstrip()
     print(gpt_prompt)
 
     return gpt_prompt
@@ -92,9 +97,9 @@ def create_gpt_metadata(gpt_json):
     return gpt_metadata
 
 
-def create_dalle_prompt(dalle_json):
-    gpt_response = dalle_json['gpt_response']
-    dalle_prompt = gpt_response.split("Visual Description:\n", 1)[1]
+def create_dalle_prompt(gpt_response):
+    #gpt_response = dalle_json['gpt_response']
+    dalle_prompt = gpt_response.split("Visual Description:\n", 2)[1]
     print(dalle_prompt)
     return dalle_prompt
 
