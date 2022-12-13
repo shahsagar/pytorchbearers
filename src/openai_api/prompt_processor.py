@@ -9,12 +9,16 @@ def create_gpt_prompt(gpt_json):
     Create a recipe with the following conditions
 
     Conditions:
-    1. use chicken, rice, cauliflower
-    2. it should be a spicy vegetarian recipe
-    3. avoid gluten and soy 
-    4. calorie count should be less than 500 calories 
-    5. there should be an appetizer and an entree
-    6. generate a visual description of the final dish
+    1. Use chicken, rice, cauliflower done
+    2. Flavor should be spicy done
+    3. It should be a vegetarian recipe done
+    4. The cuisine should be Indian done
+    3. Avoid gluten and soy done
+    5. The preparation time should be less than 30 minutes
+    6. It should be a breakfast recipe done
+    4. Calorie count should be less than 500 calories done
+    5. There should be an appetizer and an entree done
+    6. Generate a visual description of the final dish
 
     Desired Format:
     Ingredients: -||-
@@ -31,62 +35,80 @@ def create_gpt_prompt(gpt_json):
     calorie_count = gpt_json['calorie_count']
     cuisine_type = gpt_json['cuisine_type']
     allergies_list = gpt_json['allergies_list']
-    meal_type = gpt_json['meal_type']
-    food_category = gpt_json['food_category']
+    meal_type = gpt_json['meal_type']  # breakfast entree
+    food_category = gpt_json['food_category']  # veg non veg
     flavor = gpt_json['flavor']
-    # XXX: include this in final prompt
-    # XXX: include flavor profile
-    # XXX: include time of meal
     prep_time = gpt_json['prep_time']
+
+    count = 1
+    gpt_prompt = 'Create a recipe with the following conditions\n\nConditions:\n'
 
     ingredients = ''
     for ing in ing_list:
         ingredients = ingredients + ing + ', '
     ingredients = ingredients[:-2] + '.'
+    gpt_prompt = gpt_prompt + f'{count} Use {ingredients}\n'
 
-    cuisine = ''
     if cuisine_type:
-        cuisine = cuisine_type
-
-    calories = ''
-    cal_breakdown = ''
-    if calorie_count:
-        calories = f'{calorie_count} calories'
-        cal_breakdown = 'Show the calorie breakdown.'
+        count += 1
+        gpt_prompt = gpt_prompt + \
+            f'{count} The cuisine should be {cuisine_type}\n'
 
     if allergies_list:
-        allergies = 'No '
+        count += 1
+        allergies = ''
         for allergy in allergies_list:
             allergies = allergies + allergy + ', '
         print(allergies)
         allergies = allergies[:-2] + '.'
-    else:
-        allergies = ''
+        gpt_prompt = gpt_prompt + f'{count} Avoid {allergies}\n'
+
+    if calorie_count:
+        count += 1
+        gpt_prompt = gpt_prompt + \
+            f'{count} The calorie count of the recipe should be less than {calorie_count}\n'
+
+    if prep_time:
+        count += 1
+        gpt_prompt = gpt_prompt + \
+            f'{count} The preparation time should be less than {prep_time} minutes\n'
 
     # veg non veg
     meal = ''
-    if meal_type:
-        meal = meal_type
+    if food_category:
+        count += 1
+        gpt_prompt = gpt_prompt + \
+            f'{count} It should be a {food_category} recipe\n'
 
-    viz = 'There should be a visual description of the final dish'
+    viz = 'Generate a visual description of the final dish\n'
 
     # entree appetizer
-    food_breakdown = ''
-    if food_category:
-        food_breakdown = 'There should be '
-        viz += ' including '
-        for category in food_category:
-            food_breakdown = food_breakdown + category + ', '
-            viz = viz + category + ' and '
-        food_breakdown = food_breakdown[:-2] + '.'
-        viz = viz[:-4]
+    meal_breakdown = 'The recipe should contain '
+    if meal_type:
+        count += 1
+        # viz += ' including '
+        for meal in meal_type:
+            meal_breakdown = meal_breakdown + meal + ', '
+            # viz = viz + category + ' and '
+        meal_breakdown = meal_breakdown[:-2] + '.'
+        # viz = viz[:-4]
+        gpt_prompt = gpt_prompt + f'{count} {meal_breakdown}\n'
 
+    if flavor:
+        count += 1
+        gpt_prompt = gpt_prompt + f'{count} The flavor should be {flavor}\n'
 
-    desired_format = "Desired Format:\nIngredients: -||-\nInstructions: -||-\nCalorie Breakdown: -||-\nNutrition Information Per Serving: -||-\nVisual Description: -||-"
-    new_prompt = f'Create a recipe with the following conditions\n\nConditions:\nuse {ingredients}\nit should be {flavor} {meal} {cuisine} recipe\n{allergies}\ncalorie count should be less than{calories}\n{food_breakdown}\n{viz}\n\n{desired_format}'
+    gpt_prompt = gpt_prompt + f'{count} {viz}'
 
-    #gpt_prompt = f'Create a {calories} {meal} {cuisine} recipe using {ingredients} {cal_breakdown} {allergies} {food_breakdown} {viz}'
-    gpt_prompt = new_prompt.rstrip()
+    desired_format = '''
+    Desired Format:
+    Ingredients: -||-
+    Instructions: -||-
+    Nutrition Information Per Serving: -||-
+    Visual Description: -||-'''
+
+    gpt_prompt += desired_format
+    gpt_prompt = gpt_prompt.rstrip()
     print(gpt_prompt)
 
     return gpt_prompt

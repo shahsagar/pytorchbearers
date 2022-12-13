@@ -9,14 +9,11 @@
     "cuisine_type": "Indian",
     "flavor": "spicy",
     "allergies_list": [
-        "gluten",
-        "nut",
         "soy"
     ],
-    "meal_type": "non vegetarian",
-    "food_category": [
-        "entree",
-        "appetizer"
+    "food_category": "non vegetarian",
+    "meal_type": [
+        "dessert"
     ],
     "prep_time": "45"
 }
