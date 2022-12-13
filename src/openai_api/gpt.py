@@ -43,7 +43,7 @@ Function which takes in prompt and generates a list of PIL images as output
 '''
 
 
-def get_recipe(prompt, temperature=0.7, max_tokens=1670, number_of_results=1):
+def get_recipe(prompt, temperature=0.7, max_tokens=3700, number_of_results=1):
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=prompt,  # "i have potatoes, rice, and tofu. Create a 500 calories recipe using these ingredients and show the calorie breakwdown",
@@ -71,6 +71,6 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     prompts = get_recipe(args.prompt, args.temperature,
-                          args.max_tokens, number_of_results=1)
+                         args.max_tokens, number_of_results=1)
 
     print(prompts)

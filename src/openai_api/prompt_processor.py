@@ -59,7 +59,6 @@ def create_gpt_prompt(gpt_json):
         allergies = ''
         for allergy in allergies_list:
             allergies = allergies + allergy + ', '
-        print(allergies)
         allergies = allergies[:-2] + '.'
         gpt_prompt = gpt_prompt + f'{count} Avoid {allergies}\n'
 
@@ -86,12 +85,15 @@ def create_gpt_prompt(gpt_json):
     meal_breakdown = 'The recipe should contain '
     if meal_type:
         count += 1
-        # viz += ' including '
-        for meal in meal_type:
-            meal_breakdown = meal_breakdown + meal + ', '
-            # viz = viz + category + ' and '
-        meal_breakdown = meal_breakdown[:-2] + '.'
-        # viz = viz[:-4]
+        if len(meal_type) == 1:
+            meal_breakdown = meal_breakdown + f'only {meal_type[0]}'
+        else:
+            # viz += ' including '
+            for meal in meal_type:
+                meal_breakdown = meal_breakdown + meal + ', '
+                # viz = viz + category + ' and '
+            meal_breakdown = meal_breakdown[:-2] + '.'
+            # viz = viz[:-4]
         gpt_prompt = gpt_prompt + f'{count} {meal_breakdown}\n'
 
     if flavor:
@@ -105,6 +107,7 @@ def create_gpt_prompt(gpt_json):
     Ingredients: -||-
     Instructions: -||-
     Nutrition Information Per Serving: -||-
+    Preparation Time: -||- 
     Visual Description: -||-'''
 
     gpt_prompt += desired_format

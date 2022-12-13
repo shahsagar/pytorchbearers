@@ -5,7 +5,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
 from openai_api import run_app
-
+import json
 
 if "myingredients" not in st.session_state:
     st.session_state.myingredients = []
@@ -33,6 +33,9 @@ list_ingredients()
 
 if st.button('Generate recipe'):
     # sagar will fetch input json
+    # XXX: replace this with Sagar's input
+    with open('/home/ubuntu/pytorchbearers/src/openai_api/gpt_json.json') as f:
+        input_json = json.loads(f.read())
 
     recipe, images = run_app.run(input_json)
 
