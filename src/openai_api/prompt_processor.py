@@ -132,21 +132,3 @@ def create_dalle_prompt(gpt_response):
 def create_dalle_metadata(dalle_json):
     dalle_metadata = []
     return dalle_metadata
-
-
-'''
-ingredients - tofu, peas, chicken
-calories - 500
-allergies - gluten, 
-
-
-
-
-
-prompt = f'I have {ingredients}. Create a recipe for me using these ingredients'
-if calories:
-    prompt += It needs to be a {calories} recipe and show the calorie breakdown.
-
-if cuisine:
-    prompt +=  
-'''
