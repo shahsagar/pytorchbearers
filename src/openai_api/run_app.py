@@ -26,7 +26,8 @@ def run(input_json):
 
     dalle_prompt = prompt_processor.create_dalle_prompt(recipe)
 
-    images = dalle.generate_output(dalle_prompt)
+    # change number of images here
+    images = dalle.generate_output(dalle_prompt, 3)
 
     plt.imshow(images[0])
     plt.savefig(f'dish-{timestr}.png')
