@@ -1,9 +1,7 @@
 {
     "ing_list": [
-        "chicken",
-        "rice",
-        "green peas",
-        "broccoli"
+        "bittergourd",
+        "milk"
     ],
     "calorie_count": "500",
     "cuisine_type": "Indian",
@@ -13,7 +11,7 @@
     ],
     "food_category": "non vegetarian",
     "meal_type": [
-        "dessert"
+        "entree"
     ],
     "prep_time": "45"
 }

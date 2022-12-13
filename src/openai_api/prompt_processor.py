@@ -124,7 +124,7 @@ def create_gpt_metadata(gpt_json):
 
 def create_dalle_prompt(gpt_response):
     #gpt_response = dalle_json['gpt_response']
-    dalle_prompt = gpt_response.split("Visual Description:\n", 2)[1]
+    dalle_prompt = gpt_response.split("Visual Description:", 2)[1]
     print(dalle_prompt)
     return dalle_prompt
 
