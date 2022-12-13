@@ -49,7 +49,7 @@ def create_gpt_prompt(gpt_json):
     ingredients = ingredients[:-2] + '.'
     gpt_prompt = gpt_prompt + f'{count} Use {ingredients}\n'
 
-    if cuisine_type:
+    if cuisine_type != 'Any':
         count += 1
         gpt_prompt = gpt_prompt + \
             f'{count} The cuisine should be {cuisine_type}\n'
@@ -74,7 +74,7 @@ def create_gpt_prompt(gpt_json):
 
     # veg non veg
     meal = ''
-    if food_category:
+    if food_category != 'Any':
         count += 1
         gpt_prompt = gpt_prompt + \
             f'{count} It should be a {food_category} recipe\n'
@@ -83,7 +83,7 @@ def create_gpt_prompt(gpt_json):
 
     # entree appetizer
     meal_breakdown = 'The recipe should contain '
-    if meal_type:
+    if meal_type != 'Any':
         count += 1
         if len(meal_type) == 1:
             meal_breakdown = meal_breakdown + f'only {meal_type[0]}'
@@ -96,7 +96,7 @@ def create_gpt_prompt(gpt_json):
             # viz = viz[:-4]
         gpt_prompt = gpt_prompt + f'{count} {meal_breakdown}\n'
 
-    if flavor:
+    if flavor != 'Any':
         count += 1
         gpt_prompt = gpt_prompt + f'{count} The flavor should be {flavor}\n'
 
