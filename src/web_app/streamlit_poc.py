@@ -66,8 +66,12 @@ clicked = st.button('Generate recipe')
 if 'response' in st.session_state or (clicked and st.session_state.input['ing_list']):
     recipe, images = run_app.run(st.session_state.input)
 
-    st.write(recipe)
-    cols = st.columns(len(images))
-    for i in range(len(images)):
-        with cols[i]:
-            st.image(images[i])
+    if(recipe):
+        st.write(recipe)
+    if(images):
+        cols = st.columns(len(images))
+        for i in range(len(images)):
+            with cols[i]:
+                st.image(images[i])
+
+    #TODO -> Add the case for showing user helpful message in case of recipe blank and images

@@ -14,18 +14,21 @@ Function which takes in prompt and generates a list of PIL images as output
 
 
 def generate_output(prompt, number_of_results=1, size="1024x1024"):
-    response = openai.Image.create(
-        prompt=prompt,
-        n=number_of_results,
-        size=size
-    )
+    try:
+        response = openai.Image.create(
+            prompt=prompt,
+            n=number_of_results,
+            size=size
+        )
 
-    image_urls = response['data']
-    result_images = []
-    for url in image_urls:
-        response = requests.get(url['url'])
-        img = Image.open(BytesIO(response.content))
-        result_images.append(img)
+        image_urls = response['data']
+        result_images = []
+        for url in image_urls:
+            response = requests.get(url['url'])
+            img = Image.open(BytesIO(response.content))
+            result_images.append(img)
+    except Exception as e:
+        raise Exception("Error occured in calling Dalle image create api",e)
 
     return result_images
 
@@ -37,11 +40,15 @@ if __name__ == '__main__':
     parser.add_argument("--size",           type=str,     help="image size",          default="1024x1024")
 
     args = parser.parse_args()
-    images = generate_output(args.prompt, args.n, args.size)
-    for idx, img in enumerate(images):
-        plt.imshow(img)
-        plt.savefig(f'result_image_{idx}.png')
-        plt.show()
+
+    try:
+        images = generate_output(args.prompt, args.n, args.size)
+        for idx, img in enumerate(images):
+            plt.imshow(img)
+            plt.savefig(f'result_image_{idx}.png')
+            plt.show()
+    except Exception as e:
+        print(e)
 
 '''
 sample prompt
