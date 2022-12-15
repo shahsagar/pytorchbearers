@@ -80,7 +80,7 @@ with cols[0]:
 with cols[1]:
     pass
 with cols[2]:
-    clicked = st.button('Generate recipe')
+    clicked = st.button('Generat recipe')
 with cols[3]:
     pass
 with cols[4]:
