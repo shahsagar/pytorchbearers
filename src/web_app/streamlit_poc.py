@@ -321,7 +321,6 @@ if 'response' in st.session_state or (clicked and st.session_state.input['ing_li
         try:
             gpt_json = st.session_state.input
             gpt_prompt = create_gpt_prompt(gpt_json)
-            st.write('TEST!!!!')
 
             recipe = run_gpt(gpt_prompt)
 
