@@ -16,8 +16,6 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
 
 st.set_page_config(layout="wide")
 
-widget = st.empty()
-
 if os.path.exists(f'{os.path.dirname(os.path.abspath(__file__))}/openai_key.txt'):
     with open(f'{os.path.dirname(os.path.abspath(__file__))}/openai_key.txt') as f:
         openai.api_key = f.readline()
@@ -246,7 +244,7 @@ def create_dalle_prompt(gpt_response):
 
 def list_ingredients():
     for i, ingredient in enumerate(st.session_state.input['ing_list']):
-        widget.write(ingredient)
+        st.write(ingredient)
 
 
 st.markdown("<h2 style='text-align: center; color: #fd6d6d;'>AI ENTERS THE KITCHEN</h2>",
@@ -357,7 +355,7 @@ if 'response' in st.session_state or (clicked and st.session_state.input['ing_li
             st.session_state.input['ing_list'] = []
 
             st.write('P.S.: Remember, this recipe is generated using artificial intelligence. Kindly use your natural intelligence to decide if it is right for you :)')
-            # widget.empty()
+
         except Exception as e:
             print('Something went wrong. Please try again')
         # TODO -> Add the case for showing user helpful message in case of recipe blank and images
