@@ -247,7 +247,16 @@ def list_ingredients():
         st.write(ingredient)
 
 
-st.title('AI ENTERS THE KITCHEN')
+st.markdown("<h2 style='text-align: center; color: #fd6d6d;'>AI ENTERS THE KITCHEN</h2>",
+            unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+.big-font {
+    font-size:100px;
+}
+</style>
+""", unsafe_allow_html=True)
 st.markdown('<div style="text-align: center;">**Hello hungry foodies, it is time to munch!**</div>',
             unsafe_allow_html=True)
 st.write('')
