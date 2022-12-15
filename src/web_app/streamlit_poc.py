@@ -191,12 +191,12 @@ if 'response' in st.session_state or (clicked and st.session_state.input['ing_li
             gpt_json = st.session_state.input
             gpt_prompt = prompt_processor.create_gpt_prompt(gpt_json)
 
-            recipe = run_gpt(gpt_json)
-
-            dalle_prompt = prompt_processor.create_dalle_prompt(recipe)
+            recipe = run_gpt(gpt_prompt)
 
             if (recipe):
                 st.write(recipe)
+
+            dalle_prompt = prompt_processor.create_dalle_prompt(recipe)
 
             images = run_dalle(dalle_prompt)
             if (images):
