@@ -35,10 +35,11 @@ def create_gpt_prompt(gpt_json):
     calorie_count = gpt_json['calorie_count']
     cuisine_type = gpt_json['cuisine_type']
     allergies_list = gpt_json['allergies_list']
-    meal_type = gpt_json['meal_type']  # breakfast entree
-    food_category = gpt_json['food_category']  # veg non veg
+    meal_type = gpt_json['meal_type']  # entree
+    food_category = gpt_json['diet_restriction']  # veg non veg
     flavor = gpt_json['flavor']
     prep_time = gpt_json['prep_time']
+    time_of_meal = gpt_json['time_of_meal']
 
     count = 1
     gpt_prompt = 'Create a recipe with the following conditions\n\nConditions:\n'
@@ -54,7 +55,7 @@ def create_gpt_prompt(gpt_json):
         gpt_prompt = gpt_prompt + \
             f'{count} The cuisine should be {cuisine_type}\n'
 
-    if allergies_list:
+    if allergies_list and 'None' not in allergies_list:
         count += 1
         allergies = ''
         for allergy in allergies_list:
@@ -85,16 +86,12 @@ def create_gpt_prompt(gpt_json):
     meal_breakdown = 'The recipe should contain '
     if meal_type != 'Any':
         count += 1
-        if len(meal_type) == 1:
-            meal_breakdown = meal_breakdown + f'only {meal_type[0]}'
-        else:
-            # viz += ' including '
-            for meal in meal_type:
-                meal_breakdown = meal_breakdown + meal + ', '
-                # viz = viz + category + ' and '
-            meal_breakdown = meal_breakdown[:-2] + '.'
-            # viz = viz[:-4]
+        meal_breakdown = meal_breakdown + f'only {meal_type}'
         gpt_prompt = gpt_prompt + f'{count} {meal_breakdown}\n'
+
+    if time_of_meal != 'Any':
+        count += 1
+        gpt_prompt = gpt_prompt + f'{count} Make it a {time_of_meal} recipe\n'
 
     if flavor != 'Any':
         count += 1
