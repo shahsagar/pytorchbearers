@@ -3,8 +3,8 @@ import openai
 import argparse
 import streamlit as st
 
-if os.path.exists('openai_api.txt'):
-    with open('openai_key.txt') as f:
+if os.path.exists(f'{os.path.dirname(os.path.abspath(__file__))}/openai_key.txt'):
+    with open(f'{os.path.dirname(os.path.abspath(__file__))}/openai_key.txt') as f:
         openai.api_key = f.readline()
 else:
     openai.api_key = st.secrets["openai_key"]
