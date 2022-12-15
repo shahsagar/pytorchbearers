@@ -4,7 +4,7 @@ import streamlit as st
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
-from openai_api import run_app
+from openai_api import run_app, prompt_processor
 
 st.set_page_config(layout="wide")
 
@@ -90,13 +90,16 @@ if 'response' in st.session_state or (clicked and st.session_state.input['ing_li
     with st.spinner(text="Creating something yummy for you..."):
         try:
             gpt_json = st.session_state.input
-            recipe, dalle_prompt = run_app.run_gpt(gpt_json)
-            # st.session_state['response'] = recipe
+            gpt_prompt = prompt_processor.create_gpt_prompt(gpt_json)
+
+            recipe = run_app.run_gpt(gpt_json)
+
+            dalle_prompt = prompt_processor.create_dalle_prompt(recipe)
+
             if (recipe):
                 st.write(recipe)
 
             images = run_app.run_dalle(dalle_prompt)
-            # st.session_state['image_response'] = images
             if (images):
                 cols = st.columns(len(images))
                 for i in range(len(images)):

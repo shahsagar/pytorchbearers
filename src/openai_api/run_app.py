@@ -12,11 +12,10 @@ import lovely_logger as logging
 here = os.path.dirname(os.path.abspath(__file__))
 
 
-def run_gpt(input_json):
+def run_gpt(gpt_prompt):
     fmt = "%Y%m%d-%H:%M:%S"
     now_time = datetime.now(timezone('US/Eastern'))
     timestr = now_time.strftime(fmt)
-    gpt_prompt = prompt_processor.create_gpt_prompt(input_json)
 
     try:
         recipe = gpt.get_recipe(
@@ -25,9 +24,8 @@ def run_gpt(input_json):
         # with open(f'logs/recipe-{timestr}.txt', 'w') as f:
         #     print(recipe, file=f)
 
-        dalle_prompt = prompt_processor.create_dalle_prompt(recipe)
         logging.info(f'outputttt of gpt {recipe}')
-        return recipe, dalle_prompt
+        return recipe
 
     except Exception as e:
         print(e)
