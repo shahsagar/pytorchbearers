@@ -21,8 +21,8 @@ def run_gpt(input_json):
         recipe = gpt.get_recipe(
             gpt_prompt, 0.7, 3700, 1)
 
-        with open(f'logs/recipe-{timestr}.txt', 'w') as f:
-            print(recipe, file=f)
+        # with open(f'logs/recipe-{timestr}.txt', 'w') as f:
+        #     print(recipe, file=f)
 
         dalle_prompt = prompt_processor.create_dalle_prompt(recipe)
 
@@ -45,8 +45,8 @@ def run_dalle(dalle_prompt):
         # change number of images here
         images = dalle.generate_output(dalle_prompt, 3)
 
-        plt.imshow(images[0])
-        plt.savefig(f'logs/dish-{timestr}.png')
+        # plt.imshow(images[0])
+        # plt.savefig(f'logs/dish-{timestr}.png')
 
         return images
 
@@ -60,4 +60,3 @@ if __name__ == '__main__':
         gpt_json = json.loads(f.read())
         recipe, dalle_prompt = run_gpt(gpt_json)
         run_dalle(dalle_prompt)
-
