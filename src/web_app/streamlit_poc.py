@@ -185,11 +185,11 @@ with cols[4]:
     pass
 
 if 'response' in st.session_state or (clicked and st.session_state.input['ing_list']):
-    st.write('TEST!!!!')
     with st.spinner(text="Creating something yummy for you..."):
         try:
             gpt_json = st.session_state.input
             gpt_prompt = prompt_processor.create_gpt_prompt(gpt_json)
+            st.write('TEST!!!!')
 
             recipe = run_gpt(gpt_prompt)
 
