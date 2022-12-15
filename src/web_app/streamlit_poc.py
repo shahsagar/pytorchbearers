@@ -48,11 +48,6 @@ def extract_prompt(choices):
     return prompts[0]
 
 
-'''
-Function which takes in prompt and generates a recipe as output
-'''
-
-
 def get_recipe(prompt, temperature=0.7, max_tokens=3700, number_of_results=1):
     try:
         response = openai.Completion.create(
@@ -82,8 +77,6 @@ def run_gpt(gpt_prompt):
         recipe = get_recipe(
             gpt_prompt, 0.7, 3700, 1)
         print(recipe)
-        # with open(f'logs/recipe-{timestr}.txt', 'w') as f:
-        #     print(recipe, file=f)
 
         return recipe
 
