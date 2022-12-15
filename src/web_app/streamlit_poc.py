@@ -12,7 +12,7 @@ from PIL import Image
 from datetime import datetime
 from pytz import timezone
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
-from openai_api import run_app, prompt_processor
+from openai_api import prompt_processor
 
 st.set_page_config(layout="wide")
 

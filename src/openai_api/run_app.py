@@ -11,7 +11,7 @@ from PIL import Image
 
 from datetime import datetime
 from pytz import timezone
-import lovely_logger as logging
+# import lovely_logger as logging
 
 here = os.path.dirname(os.path.abspath(__file__))
 
