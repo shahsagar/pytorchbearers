@@ -1,4 +1,5 @@
 import streamlit as st
+import lovely_logger as logging
 
 
 def create_gpt_prompt(gpt_json):
@@ -109,7 +110,7 @@ def create_gpt_prompt(gpt_json):
 
     gpt_prompt += desired_format
     gpt_prompt = gpt_prompt.rstrip()
-    st.write(gpt_prompt)
+    logging.info(f'inputtt for gpt {gpt_prompt}')
 
     return gpt_prompt
 
@@ -122,7 +123,8 @@ def create_gpt_metadata(gpt_json):
 def create_dalle_prompt(gpt_response):
     #gpt_response = dalle_json['gpt_response']
     dalle_prompt = gpt_response.split("Visual Description:", 2)[1]
-    st.write(dalle_prompt)
+    logging.info(f'inputtt for dalle {dalle_prompt}')
+
     return dalle_prompt
 
 

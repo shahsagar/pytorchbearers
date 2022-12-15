@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 from datetime import datetime
 from pytz import timezone
+import lovely_logger as logging
 
 here = os.path.dirname(os.path.abspath(__file__))
 
@@ -25,7 +26,7 @@ def run_gpt(input_json):
         #     print(recipe, file=f)
 
         dalle_prompt = prompt_processor.create_dalle_prompt(recipe)
-
+        logging.info(f'outputttt of gpt {recipe}')
         return recipe, dalle_prompt
 
     except Exception as e:
