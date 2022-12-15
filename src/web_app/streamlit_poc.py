@@ -250,7 +250,7 @@ def list_ingredients():
 st.markdown('<div style="text-align: center;">Hello hungry foodies, it is time to munch!</div>',
             unsafe_allow_html=True)
 st.write('')
-st.markdown('<div style="text-align: center;">Whether you are in a soup since you only have a few items in your refrigator or you are in pickle because you have a lot of ingredients but do not know what different you could prepare - Do not worry, we got you covered!</div>',
+st.markdown('<div style="text-align: center;">Whether you are in a soup since you only have a few items in your refrigator or you are in a pickle because you have a lot of ingredients but do not know what different you could prepare - Do not worry, we got you covered!</div>',
             unsafe_allow_html=True)
 st.write('')
 st.markdown('<div style="text-align: center;">Just list down your ingredients below. You are free to specify other options or leave it as is.</div>',
