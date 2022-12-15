@@ -308,11 +308,11 @@ with cols[6]:
 
 with cols[7]:
     st.session_state.input['calorie_count'] = st.slider(
-        'NUMBER OF CALORIES', 0, 4000, 500)
+        'CALORIES (Max)', 0, 4000, 500)
 
 with cols[8]:
     st.session_state.input['prep_time'] = st.slider(
-        'PREP TIME', 0, 120, 30)
+        'PREP TIME (Max)', 0, 120, 30)
 
 cols = st.columns(5)
 with cols[0]:
@@ -346,8 +346,13 @@ if 'response' in st.session_state or (clicked and st.session_state.input['ing_li
                     with cols[i]:
                         st.image(images[i])
 
+            st.download_button(
+                label="Download recipe",
+                data=recipe,
+                file_name='recipe.txt',
+            )
+
             st.write('P.S.: Remember, this recipe is generated using artificial intelligence. Kindly use your natural intelligence to decide if it is right for you :)')
         except Exception as e:
             print('Something went wrong. Please try again')
-
         # TODO -> Add the case for showing user helpful message in case of recipe blank and images
