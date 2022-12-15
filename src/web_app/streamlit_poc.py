@@ -16,6 +16,9 @@ from openai_api import prompt_processor
 
 st.set_page_config(layout="wide")
 
+if "input" not in st.session_state:
+    st.session_state.input = {'ing_list': []}
+
 
 def generate_output(prompt, number_of_results=1, size="1024x1024"):
     try:
@@ -105,10 +108,6 @@ def run_dalle(dalle_prompt):
     except Exception as e:
         print(e)
         return e
-
-
-if "input" not in st.session_state:
-    st.session_state.input = {'ing_list': []}
 
 
 def list_ingredients():
