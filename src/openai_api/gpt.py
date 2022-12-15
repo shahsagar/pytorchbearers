@@ -8,25 +8,6 @@ import matplotlib.pyplot as plt
 # XXX: replace it with env var; current hack to overcome vscode-jupyter bash issue
 openai.api_key = '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'
 
-"""
-Sample prompt - i have potatoes, rice, and tofu.Create a 500 calories recipe using these ingredients and show the calorie breakwdown
-"""
-
-
-def preprocessed_prompt(prompt):
-    '''
-    Englishify the prompt from the user input of variables
-    return the preprocessed prompt - intuitive prompt =- TODO  gpt + dalle combo here
-    '''
-    return prompt
-
-
-def get_english_prompt(user_input):
-    '''
-    Englishify the prompt from the user input of variables
-    '''
-    pass
-
 
 def extract_prompt(choices):
     prompts = []
@@ -39,7 +20,7 @@ def extract_prompt(choices):
 
 
 '''
-Function which takes in prompt and generates a list of PIL images as output
+Function which takes in prompt and generates a recipe as output
 '''
 
 
@@ -58,9 +39,10 @@ def get_recipe(prompt, temperature=0.7, max_tokens=3700, number_of_results=1):
             return extract_prompt(response['choices'])
 
     except Exception as e:
-        raise Exception("Error occured in calling GPT completion api",e)
+        raise Exception("Error occured in calling GPT completion api", e)
 
     return []
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -75,8 +57,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     try:
         prompts = get_recipe(args.prompt, args.temperature,
-                            args.max_tokens, number_of_results=1)
+                             args.max_tokens, number_of_results=1)
         print(prompts)
     except Exception as e:
-        print("Exception occured",e)
-    
+        print("Exception occured", e)

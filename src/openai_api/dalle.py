@@ -29,6 +29,7 @@ def generate_output(prompt, number_of_results=1, size="1024x1024"):
             result_images.append(img)
     except Exception as e:
         raise Exception("Error occured in calling Dalle image create api",e)
+        return e
 
     return result_images
 
