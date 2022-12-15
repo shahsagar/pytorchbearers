@@ -14,6 +14,8 @@ from pytz import timezone
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
 from openai_api import run_app, prompt_processor
 
+st.set_page_config(layout="wide")
+
 
 def generate_output(prompt, number_of_results=1, size="1024x1024"):
     try:
@@ -111,8 +113,6 @@ def run_dalle(dalle_prompt):
         print(e)
         return e
 
-
-st.set_page_config(layout="wide")
 
 if "input" not in st.session_state:
     st.session_state.input = {'ing_list': []}
