@@ -1,8 +1,13 @@
+import os
 import openai
 import argparse
+import streamlit as st
 
-with open('openai_key.txt') as f:
-    openai.api_key = f.readline()
+if os.path.exists('openai_api.txt'):
+    with open('openai_key.txt') as f:
+        openai.api_key = f.readline()
+else:
+    openai.api_key = st.secrets["openai_key"]
 
 
 def extract_prompt(choices):

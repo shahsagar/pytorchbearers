@@ -1,12 +1,17 @@
+import os
 import openai
 import requests
 from io import BytesIO
 from PIL import Image
 import argparse
 import matplotlib.pyplot as plt
+import streamlit as st
 
-with open('openai_key.txt') as f:
-    openai.api_key = f.readline()
+if os.path.exists('openai_api.txt'):
+    with open('openai_key.txt') as f:
+        openai.api_key = f.readline()
+else:
+    openai.api_key = st.secrets["openai_key"]
 
 '''
 Function which takes in prompt and generates a list of PIL images as output
