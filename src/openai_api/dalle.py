@@ -5,8 +5,8 @@ from PIL import Image
 import argparse
 import matplotlib.pyplot as plt
 
-# XXX: replace it with env var; current hack to overcome vscode-jupyter bash issue
-openai.api_key = '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'
+with open('openai_key.txt') as f:
+    openai.api_key = f.readline()
 
 '''
 Function which takes in prompt and generates a list of PIL images as output
@@ -28,17 +28,20 @@ def generate_output(prompt, number_of_results=1, size="1024x1024"):
             img = Image.open(BytesIO(response.content))
             result_images.append(img)
     except Exception as e:
-        raise Exception("Error occured in calling Dalle image create api",e)
+        raise Exception("Error occured in calling Dalle image create api", e)
         return e
 
     return result_images
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Cmdline arguments to run the dalle generator')
-    parser.add_argument("--prompt",         type=str,     help="prompt less than 400 chars",)
-    parser.add_argument("--n",              type=int,     help="number of results",   default=4)
-    parser.add_argument("--size",           type=str,     help="image size",          default="1024x1024")
+    parser = argparse.ArgumentParser(
+        description='Cmdline arguments to run the dalle generator')
+    parser.add_argument("--prompt", type=str,
+                        help="prompt less than 400 chars",)
+    parser.add_argument("--n", type=int, help="number of results", default=4)
+    parser.add_argument("--size", type=str,
+                        help="image size", default="1024x1024")
 
     args = parser.parse_args()
 

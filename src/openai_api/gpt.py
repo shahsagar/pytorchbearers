@@ -1,12 +1,8 @@
 import openai
-import requests
-from io import BytesIO
-from PIL import Image
 import argparse
-import matplotlib.pyplot as plt
 
-# XXX: replace it with env var; current hack to overcome vscode-jupyter bash issue
-openai.api_key = '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'
+with open('openai_key.txt') as f:
+    openai.api_key = f.readline()
 
 
 def extract_prompt(choices):
