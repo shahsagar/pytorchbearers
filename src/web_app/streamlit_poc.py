@@ -89,13 +89,14 @@ with cols[4]:
 if 'response' in st.session_state or (clicked and st.session_state.input['ing_list']):
     with st.spinner(text="Creating something yummy for you..."):
         try:
-            recipe, dalle_prompt = run_app.run_gpt(st.session_state.input)
-            st.session_state['response'] = recipe
+            gpt_json = st.session_state.input
+            recipe, dalle_prompt = run_app.run_gpt(gpt_json)
+            # st.session_state['response'] = recipe
             if (recipe):
                 st.write(recipe)
 
             images = run_app.run_dalle(dalle_prompt)
-            st.session_state['image_response'] = images
+            # st.session_state['image_response'] = images
             if (images):
                 cols = st.columns(len(images))
                 for i in range(len(images)):
