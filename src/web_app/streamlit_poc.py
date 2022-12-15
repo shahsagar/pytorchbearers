@@ -252,20 +252,20 @@ st.markdown("<h2 style='text-align: center; '>AI ENTERS THE KITCHEN</h2>",
 
 st.markdown("<h4 style='text-align: center; '>Hello hungry foodies, it is time to munch!</h4>",
             unsafe_allow_html=True)
-st.markdown("<h5 style='text-align: center; '>Whether you are in a soup since you only have a few items in your refrigator OR you are in a pickle because you have a lot of ingredients but do not know what different you could prepare - Do not worry, we got you covered!</h5>",
-            unsafe_allow_html=True)
-st.markdown("<h5 style='text-align: center; '>Just list down your ingredients below. You are free to specify other options or leave it as is.</h5>",
-            unsafe_allow_html=True)
+# st.markdown("<h5 style='text-align: center; '>But, whether you are in a soup since you only have a few items in your refrigator OR you are in a pickle because you have a lot of ingredients but do not know what different you could prepare - Do not worry, we got you covered!</h5>",
+#             unsafe_allow_html=True)
+# st.markdown("<h5 style='text-align: center; '>Just list down your ingredients below. You are free to specify other options or leave it as is.</h5>",
+#             unsafe_allow_html=True)
 
 # st.markdown('<div style="text-align: center;">**Hello hungry foodies, it is time to munch!**</div>',
 #             unsafe_allow_html=True)
-# st.write('')
-# st.markdown('<div style="text-align: center;">Whether you are in a soup since you only have a few items in your refrigator OR you are in a pickle because you have a lot of ingredients but do not know what different you could prepare - Do not worry, we got you covered!</div>',
-#             unsafe_allow_html=True)
-# st.write('')
-# st.markdown('<div style="text-align: center;">Just list down your ingredients below. You are free to specify other options or leave it as is.</div>',
-#             unsafe_allow_html=True)
-# st.write('')
+st.write('')
+st.markdown('<div style="text-align: center;">But, whether you are in a soup since you only have a few items in your refrigator OR you are in a pickle because you have a lot of ingredients but do not know what different you could prepare - Do not worry, we got you covered!</div>',
+            unsafe_allow_html=True)
+st.write('')
+st.markdown('<div style="text-align: center;">Just list down your ingredients below. You are free to specify other options or leave it as is.</div>',
+            unsafe_allow_html=True)
+st.write('')
 
 # st.write('Hello Foodies, welcome!')
 # st.write('')
