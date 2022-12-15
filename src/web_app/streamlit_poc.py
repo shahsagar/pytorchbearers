@@ -5,7 +5,6 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
 from openai_api import run_app
-import json
 
 st.set_page_config(layout="wide")
 

@@ -1,5 +1,3 @@
-import json
-
 
 def create_gpt_prompt(gpt_json):
     '''
