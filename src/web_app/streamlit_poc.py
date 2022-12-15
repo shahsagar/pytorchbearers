@@ -16,6 +16,12 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
 
 st.set_page_config(layout="wide")
 
+if os.path.exists(f'{os.path.dirname(os.path.abspath(__file__))}/openai_key.txt'):
+    with open(f'{os.path.dirname(os.path.abspath(__file__))}/openai_key.txt') as f:
+        openai.api_key = f.readline()
+else:
+    openai.api_key = st.secrets["openai_key"]
+
 if "input" not in st.session_state:
     st.session_state.input = {'ing_list': []}
 
