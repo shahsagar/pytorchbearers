@@ -1,3 +1,5 @@
+import streamlit as st
+
 
 def create_gpt_prompt(gpt_json):
     '''
@@ -107,7 +109,7 @@ def create_gpt_prompt(gpt_json):
 
     gpt_prompt += desired_format
     gpt_prompt = gpt_prompt.rstrip()
-    print(gpt_prompt)
+    st.write(gpt_prompt)
 
     return gpt_prompt
 
@@ -120,7 +122,7 @@ def create_gpt_metadata(gpt_json):
 def create_dalle_prompt(gpt_response):
     #gpt_response = dalle_json['gpt_response']
     dalle_prompt = gpt_response.split("Visual Description:", 2)[1]
-    print(dalle_prompt)
+    st.write(dalle_prompt)
     return dalle_prompt
 
 
