@@ -146,7 +146,7 @@ with cols[1]:
 
 with cols[2]:
     st.session_state.input['flavor'] = st.selectbox(
-        'FLAVOUR PROFILE', ['Any', 'Sweet', 'Spicy', 'Salty', 'Bitter', 'Sour', 'Umami'])
+        'FLAVOR PROFILE', ['Any', 'Sweet', 'Spicy', 'Salty', 'Bitter', 'Sour', 'Umami'])
 
 with cols[3]:
     st.session_state.input['diet_restriction'] = st.selectbox('DIETARY RESTRICTIONS', [
@@ -185,6 +185,7 @@ with cols[4]:
     pass
 
 if 'response' in st.session_state or (clicked and st.session_state.input['ing_list']):
+    st.write('TEST!!!!')
     with st.spinner(text="Creating something yummy for you..."):
         try:
             gpt_json = st.session_state.input
