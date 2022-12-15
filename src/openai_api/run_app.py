@@ -20,7 +20,7 @@ def run_gpt(input_json):
     try:
         recipe = gpt.get_recipe(
             gpt_prompt, 0.7, 3700, 1)
-
+        print(recipe)
         # with open(f'logs/recipe-{timestr}.txt', 'w') as f:
         #     print(recipe, file=f)
 
