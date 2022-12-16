@@ -247,7 +247,7 @@ def list_ingredients():
         st.write(ingredient)
 
 
-st.markdown("<h2 style='text-align: center; color: #fd6d6d;'>AI ENTERS THE KITCHEN</h2>",
+st.markdown("<h2 style='text-align: center; color: #fd6d6d;'>AI ENTERS YOUR KITCHEN</h2>",
             unsafe_allow_html=True)
 
 st.markdown("<h4 style='text-align: center; '>Hello hungry foodies, it\'s time to munch!</h4>",
@@ -256,11 +256,12 @@ st.write('')
 st.markdown('<div style="text-align: center;">But, whether you are in a soup since you only have a few items in your refrigerator OR you are in a pickle because you don\'t know what different to prepare - Worry not, we got you covered!</div>',
             unsafe_allow_html=True)
 st.write('')
-st.markdown('<div style="text-align: center;">Just enter what your preferences and leave the idea generation to us</div>',
+st.markdown('<div style="text-align: center;">Just enter your preferences and leave the idea generation to us.</div>',
             unsafe_allow_html=True)
 st.write('')
 st.markdown('<div style="text-align: center;">Whatever be your requirements, you are surely in for a treat ;-)</div>',
             unsafe_allow_html=True)
+st.write('')
 st.write('')
 
 # st.write('Hello Foodies, welcome!')
