@@ -252,18 +252,14 @@ st.markdown("<h2 style='text-align: center; color: #fd6d6d;'>AI ENTERS THE KITCH
 
 st.markdown("<h4 style='text-align: center; '>Hello hungry foodies, it\'s time to munch!</h4>",
             unsafe_allow_html=True)
-# st.markdown("<h5 style='text-align: center; '>But, whether you are in a soup since you only have a few items in your refrigator OR you are in a pickle because you have a lot of ingredients but do not know what different you could prepare - Do not worry, we got you covered!</h5>",
-#             unsafe_allow_html=True)
-# st.markdown("<h5 style='text-align: center; '>Just list down your ingredients below. You are free to specify other options or leave it as is.</h5>",
-#             unsafe_allow_html=True)
-
-# st.markdown('<div style="text-align: center;">**Hello hungry foodies, it is time to munch!**</div>',
-#             unsafe_allow_html=True)
 st.write('')
 st.markdown('<div style="text-align: center;">But, whether you are in a soup since you only have a few items in your refrigerator OR you are in a pickle because you don\'t know what different to prepare - Worry not, we got you covered!</div>',
             unsafe_allow_html=True)
 st.write('')
-st.markdown('<div style="text-align: center;">Just list down your ingredients below. You are free to specify other options or leave it as is.</div>',
+st.markdown('<div style="text-align: center;">Just enter what your preferences and leave the idea generation to us</div>',
+            unsafe_allow_html=True)
+st.write('')
+st.markdown('<div style="text-align: center;">Whatever be your requirements, you are surely in for a treat ;-)</div>',
             unsafe_allow_html=True)
 st.write('')
 
@@ -354,7 +350,11 @@ if 'response' in st.session_state or (clicked and st.session_state.input['ing_li
 
             st.session_state.input['ing_list'] = []
 
-            st.write('Kindly note: This is an AI-enabled application so there could be inaccuracies. Kindly use your judgement before using the recipe')
+            st.write(
+                'P.S. This is an AI-enabled application so there could be inaccuracies. Kindly use your judgement before using the recipe')
+            st.write('')
+            st.write(
+                'P.P.S In case the dish turns out yummy, don\'t forget to invite me over for dinner ;-)')
 
         except Exception as e:
             print('Something went wrong. Please try again')
