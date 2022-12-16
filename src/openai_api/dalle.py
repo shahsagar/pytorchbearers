@@ -7,13 +7,11 @@ import argparse
 import matplotlib.pyplot as plt
 import streamlit as st
 
-# if os.path.exists(f'{os.path.dirname(os.path.abspath(__file__))}/openai_key.txt'):
-#     with open(f'{os.path.dirname(os.path.abspath(__file__))}/openai_key.txt') as f:
-#         openai.api_key = f.readline()
-# else:
-#     openai.api_key = st.secrets["openai_key"]
-
-openai.api_key = "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"
+if os.path.exists(f'{os.path.dirname(os.path.abspath(__file__))}/openai_key.txt'):
+    with open(f'{os.path.dirname(os.path.abspath(__file__))}/openai_key.txt') as f:
+        openai.api_key = f.readline()
+else:
+    openai.api_key = st.secrets["openai_key"]
 
 '''
 Function which takes in prompt and generates a list of PIL images as output
