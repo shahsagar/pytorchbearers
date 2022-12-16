@@ -292,7 +292,7 @@ with cols[2]:
 
 with cols[3]:
     st.session_state.input['diet_restriction'] = st.selectbox('DIETARY RESTRICTIONS', [
-        'Any', 'Vegan', 'Vegetarian', 'Non vegetarian', 'Kosher', 'Halal'])
+        'Any', 'Vegan', 'Vegetarian', 'Non vegetarian'])
 
 with cols[4]:
     st.session_state.input['time_of_meal'] = st.selectbox(
@@ -354,7 +354,7 @@ if 'response' in st.session_state or (clicked and st.session_state.input['ing_li
 
             st.session_state.input['ing_list'] = []
 
-            st.write('P.S.: Remember, this recipe is generated using artificial intelligence. Kindly use your natural intelligence to decide if it is right for you :)')
+            st.write('Kindly note: This is an AI-enabled application so there could be inaccuracies. Kindly use your judgement before using the recipe')
 
         except Exception as e:
             print('Something went wrong. Please try again')
